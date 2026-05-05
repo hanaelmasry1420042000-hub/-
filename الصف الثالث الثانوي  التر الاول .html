@@ -1,0 +1,248 @@
+
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>منهج الثالث الثانوي | بوابة التاريخ الحديث</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root { --primary-green: #2c5530; --gold: #b8945f; --paper: #f9f7f2; --danger: #c0392b; --blue: #2980b9; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Cairo', sans-serif; background-color: var(--paper); color: #333; line-height: 1.7; }
+        
+        /* الهيدر باللون الأخضر */
+        .hero-header { background: linear-gradient(45deg, var(--primary-green), #3e7444); padding: 30px; display: flex; justify-content: space-between; align-items: center; color: white; border-bottom: 5px solid var(--gold); box-shadow: 0 4px 10px rgba(0,0,0,0.2); }
+        .hero-logo { width: 80px; height: 80px; background: white; border-radius: 50%; padding: 5px; object-fit: contain; }
+        .hero-title { text-align: center; flex: 1; }
+
+        .main-nav { display: flex; justify-content: center; gap: 10px; margin: 20px auto; max-width: 1000px; padding: 0 15px; }
+        .nav-btn { flex: 1; padding: 15px; border: none; border-radius: 8px; cursor: pointer; font-family: 'Cairo'; font-weight: bold; background: white; color: var(--primary-green); box-shadow: 0 2px 5px rgba(0,0,0,0.1); transition: 0.3s; }
+        .nav-btn.active { background: var(--primary-green); color: white; }
+
+        .container { max-width: 1000px; margin: 0 auto; padding: 20px; }
+        .section-view { display: none; }
+        .section-view.active { display: block; animation: fadeIn 0.5s; }
+
+        .lesson-unit { background: white; padding: 25px; border-radius: 15px; margin-bottom: 30px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
+        .objectives { background: #f0f4f8; padding: 15px; border-radius: 10px; margin-bottom: 20px; border-right: 5px solid var(--primary-green); }
+        .objectives h3 { color: var(--primary-green); font-size: 1.1rem; margin-bottom: 10px; }
+        
+        .lesson-card { padding: 20px; border-radius: 12px; margin-bottom: 20px; border-right: 8px solid; background: #fff; }
+        .lesson-img { max-width: 100%; height: auto; border-radius: 12px; margin: 20px 0; display: block; margin-left: auto; margin-right: auto; }
+
+        .activity-box { background: #f9f9f9; padding: 20px; border-radius: 10px; border: 1px solid #ddd; margin-top: 20px; }
+        .activity-box textarea { width: 100%; height: 80px; margin-top: 10px; padding: 10px; border-radius: 8px; border: 1px solid #ccc; resize: none; font-family: 'Cairo'; }
+        
+        .q-box { background: #fff; border: 1px solid #eee; padding: 15px; border-radius: 10px; margin-bottom: 15px; }
+        .submit-btn { width: 100%; padding: 18px; background: var(--primary-green); color: white; border: none; border-radius: 10px; cursor: pointer; font-weight: bold; font-size: 1.1rem; }
+        .res-div { display: none; margin-top: 15px; padding: 20px; border-radius: 10px; text-align: center; font-weight: bold; }
+        
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        hr { border: 0; height: 1px; background: #ddd; margin: 30px 0; }
+    </style>
+</head>
+<body>
+
+    <header class="hero-header">
+        <img src="logo1.jpg" class="hero-logo">
+        <div class="hero-title">
+            <h1>تاريخ مصر الحديث والمعاصر</h1>
+            <p>الصف الثالث الثانوي - محتوى تعليمي تفاعلي</p>
+        </div>
+        <img src="logo2.jpg" class="hero-logo">
+    </header>
+
+    <div class="back-nav">
+        <a href="الصفحة الرئيسية.html" class="back-link">
+            <i class="fas fa-home"></i> العودة للصفحة الرئيسية
+        </a>
+    </div>
+    <nav class="main-nav">
+        <button class="nav-btn active" onclick="showTab('pre-quiz', this)">📝 الاختبار القبلي</button>
+        <button class="nav-btn" onclick="showTab('lesson-view', this)">📖 شرح المنهج</button>
+        <button class="nav-btn" onclick="showTab('post-quiz', this)">🎓 الاختبار النهائي</button>
+    </nav>
+
+<div class="container">
+        
+        <section id="pre-quiz" class="section-view active">
+            <div class="lesson-unit">
+                <h3 style="text-align:center; color: var(--primary-green); margin-bottom:20px;">الاختبار القبلي (قياس المستوى)</h3>
+                <div id="quiz-pre-container"></div>
+                <button class="submit-btn" onclick="checkQuiz('pre')">إرسال إجابات الاختبار القبلي</button>
+                <div id="res-pre" class="res-div"></div>
+            </div>
+        </section>
+
+        <section id="lesson-view" class="section-view">
+            <div class="lesson-unit">
+                <div class="objectives">
+                    <h3>🎯 الأهداف الإجرائية:</h3>
+                    <ul style="margin-right:20px;">
+                        <li>أن يحلل الطالب أسباب الحملة الفرنسية ومقارنة المجتمعات.</li>
+                        <li>أن يستنتج الآثار العلمية والسياسية للحملة.</li>
+                    </ul>
+                </div>
+                <div class="lesson-card" style="border-right-color: var(--danger);">
+                    <h2 style="color:var(--danger);">🟦 الوحدة الأولى: الحملة الفرنسية</h2>
+                    <p><b>🔹احوال مصر قبل الحمله و دخول الحمله الفرسيه  :</b> تدهور اقتصادي وجمود ثقافي تحت الحكم العثماني.كان الحكم الفعلي في يد المماليك رغم أن مصر كانت تابعة للدولة العثمانية. وكان المماليك يتنازعون السلطة فيما بينهم، مما أدى إلى عدم الاستقرار السياسي وكثرة الصراعات. كما كانت الحالة الاقتصادية ضعيفة بسبب فرض الضرائب الكثيرة على الفلاحين والتجار، مما أدى إلى تدهور الزراعة وتراجع التجارة. بالإضافة إلى ذلك، كانت الحالة الاجتماعية صعبة، حيث عانى الناس من الفقر وانتشار الظلم وغياب العدالة، مع ضعف الخدمات وانتشار الجهل والأمراض في بعض المناطق.
+
+أما دخول الحملة الفرنسية إلى مصر فكان في عام 1798 بقيادة القائد الفرنسي نابليون بونابرت، وجاءت الحملة بهدف السيطرة على موقع مصر الاستراتيجي ومنافسة بريطانيا في طريق التجارة إلى الهند. دخلت القوات الفرنسية مصر عبر مدينة الإسكندرية بعد أن تمكنت من هزيمة المماليك في معركة إمبابة، ثم اتجهت إلى القاهرة وسيطرت عليها. وقد صاحب الحملة جانب علمي أيضًا، حيث جاءت مجموعة من العلماء لدراسة مصر من مختلف الجوانب، مما أدى لاحقًا إلى اكتشافات مهمة مثل فك رموز حجر رشيد. ورغم ذلك، واجهت الحملة مقاومة من المصريين، وانتهت بخروج الفرنسيين من مصر عام 1801</p>
+                    <p><b>🔹 النتائج:</b> أدت الحملة إلى إضعاف حكم المماليك بشكل كبير، وبدأت مرحلة جديدة من التغير في نظام الحكم في مصر، كما زاد التدخل الأجنبي في شؤون البلاد. ومن الناحية الاجتماعية، أثرت الحملة في المجتمع المصري من خلال احتكاك المصريين بالفرنسيين، وظهور بعض الأفكار الجديدة عن التنظيم والإدارة، رغم استمرار معاناة الناس من الاضطرابات خلال فترة الاحتلال.
+
+أما من الناحية العلمية، فقد كانت من أهم نتائج الحملة مجيء مجموعة من العلماء الفرنسيين الذين قاموا بدراسة مصر من جميع الجوانب، مثل التاريخ والجغرافيا والآثار والطبيعة، وأصدروا كتاب “وصف مصر” الذي يعد من أهم المراجع عن مصر في ذلك الوقت. كما ساعدت الحملة على اكتشاف حجر رشيد الذي كان سببًا في فك رموز اللغة المصرية القديمة لاحقًا. وبشكل عام، يمكن القول إن الحملة الفرنسية رغم كونها احتلالًا عسكريًا، إلا أنها تركت آثارًا علمية وثقافية مهمة في تاريخ مصر.</p>
+                </div>
+                <img src="الحلة.jpg" class="lesson-img">
+
+                <hr>
+ <div class="lesson-unit">
+                <div class="objectives">
+                    <h3>🎯 الأهداف الإجرائية:</h3>
+                    <ul>
+                        <li>أن يحلل الطالب تطورات العصر في ظل حكم محمدعلي على مصر.</li>
+                        <li>أن يقارن بين أحوال المجتمع المصري والفرنسي قبل عصر محمدعلي .</li>
+                        <li>أن يوضح دور الشعب المصري في عصرمحمد علي .</li>
+                        <li>أن يستنتج الآثار العلمية والسياسية لعصر محمد علي.</li>
+                    </ul>
+                </div>
+                <div class="lesson-card" style="border-right-color: var(--blue);">
+                    <h2 style="color:var(--blue);">🟦 الوحدة الثانية: عصر محمد علي</h2>
+                    <p><b>🔹 نظام الاحتكار:</b> وهو أن الدولة أصبحت تتحكم في إنتاج وبيع المحاصيل الزراعية والمنتجات الصناعية. بمعنى أن الفلاح كان يزرع الأرض لكن لا يملك حرية بيع محصوله في السوق، بل تقوم الحكومة بشرائه منه بسعر تحدده هي، ثم تقوم ببيعه أو تصديره لتحقيق أرباح للدولة. وكان الهدف من هذا النظام هو زيادة دخل الدولة وتقوية الاقتصاد وبناء دولة حديثة قوية، لكن في نفس الوقت أدى إلى زيادة سيطرة الحكومة على الفلاحين وتقييد حريتهم الاقتصادية.</p>
+                    <p><b>🔹 القوة العسكرية:</b>فأنشأ جيشًا نظاميًا يعتمد على التدريب والانضباط واستخدام الأسلحة الحديثة، واستعان بالخبراء الأجانب لتدريب الجنود. كما أنشأ مدارس عسكرية لتعليم الضباط، وبنى أسطولًا بحريًا قويًا، وأنشأ مصانع للسلاح لتوفير احتياجات الجيش داخل مصر. وكان هدفه من ذلك تكوين قوة عسكرية حديثة تمكنه من حماية حكمه وتوسيع نفوذه داخل مصر وخارجها.</p>
+                </div>
+                <img src="عصر الدولة الحديثة.jpg" class="lesson-img">
+                
+                <div class="activity-box">
+                    <strong>📝 نشاط تفاعلي:</strong>
+                    <p>ما رأيك في سياسة الاحتكار التي اتبعها محمد علي؟</p>
+                    <textarea placeholder="اكتب وجهة نظرك هنا..."></textarea>
+                </div>
+            </div>
+             <hr>
+
+                <h2 style="color:#f39c12; border-bottom: 2px solid #f39c12; padding-bottom: 10px; margin-bottom: 20px;">🟦 الوحدة الثالثة: مصر منذ الثورة العرابية حتى الاحتلال</h2>
+                <div class="lesson-unit">
+                     <div class="lesson-unit">
+                <div class="objectives">
+                    <h3>🎯 الأهداف الإجرائية:</h3>
+                    <ul>
+                        <li>أن يحلل الطالب أسباب الاحتلال على مصر.</li>
+                        <li>أن يقارن بين أحوال المجتمع المصري والفرنسي قبل الاحتلال.</li>
+                        <li>أن يوضح دور الشعب المصري في مقاومة الاحتلال.</li>
+                        <li>أن يستنتج الآثار العلمية والسياسية للاحتلال.</li>
+                    </ul>
+                </div>
+                    <p><b>🔹 الأزمة المالية:</b> ومن هنا ظهرت الثورة العُرابية بقيادة أحمد عرابي عام 1881، وكانت حركة وطنية قادها الجيش ضد الظلم والاستبداد وضد التدخل الأجنبي في شؤون البلاد، ورفعت شعار “مصر للمصريين”. وقد طالب الثوار بالدستور والعدل وتساوي المصريين في الحقوق داخل الجيش والدولة. لكن هذه الثورة واجهت تدخلًا أجنبيًا قويًا، حيث استغلت بريطانيا الأوضاع وأرسلت قواتها إلى مصر بحجة حماية الاستقرار.
+
+وفي عام 1882 وقع الاحتلال البريطاني لمصر بعد معركة التل الكبير، وبذلك أصبحت مصر تحت السيطرة البريطانية رغم أنها ظلت اسمياً تابعة للدولة العثمانية. وهكذا كانت الأزمة المالية هي السبب في التدخل الأجنبي، وكانت الثورة العرابية محاولة وطنية لاستعادة الاستقلال، لكنها انتهت بوقوع الاحتلال البريطاني الذي استمر سنوات طويلة.</p>
+                    <p><b>🔹 الثورة العرابية 1881:</b>ومن هنا ظهرت الثورة العُرابية بقيادة أحمد عرابي عام 1881، وكانت حركة وطنية قادها الجيش ضد الظلم والاستبداد وضد التدخل الأجنبي في شؤون البلاد، ورفعت شعار “مصر للمصريين”. وقد طالب الثوار بالدستور والعدل وتساوي المصريين في الحقوق داخل الجيش والدولة. لكن هذه الثورة واجهت تدخلًا أجنبيًا قويًا، حيث استغلت بريطانيا الأوضاع وأرسلت قواتها إلى مصر بحجة حماية الاستقرار.
+
+وفي عام 1882 وقع الاحتلال البريطاني لمصر بعد معركة التل الكبير، وبذلك أصبحت مصر تحت السيطرة البريطانية رغم أنها ظلت اسمياً تابعة للدولة العثمانية. وهكذا كانت الأزمة المالية هي السبب في التدخل الأجنبي، وكانت الثورة العرابية محاولة وطنية لاستعادة الاستقلال، لكنها انتهت بوقوع الاحتلال البريطاني الذي استمر سنوات طويلة.</p>
+                    <div class="activity-box">
+                        <strong>📝 نشاط (سؤال مقالي):</strong>
+                        <p>ما رأيك في تدخل الاحتلال في شؤون الدولة؟</p>
+                        <textarea placeholder="اكتب إجابتك هنا..."></textarea>
+                    </div>
+                </div>
+                
+                <hr>
+                 <div class="lesson-unit">
+                <div class="objectives">
+                    <h3>🎯 الأهداف الإجرائية:</h3>
+                    <ul>
+                        <li>أن يحلل الطالب أسباب الاستعمار على مصر.</li>
+                        <li>أن يقارن بين أحوال المجتمع المصري والفرنسي قبل الاستعمار.</li>
+                        <li>أن يوضح دور الشعب المصري في مقاومة الاستعمار.</li>
+                        <li>أن يستنتج الآثار العلمية والسياسية الاستعمار.</li>
+                    </ul>
+                </div>
+
+                <div class="lesson-card" style="border-right-color: #9b59b6;">
+                    <h2 style="color:#9b59b6; border-bottom: 2px solid #9b59b6; padding-bottom: 10px;">🟦 الوحدة الرابعه: العرب والاستعمار</h2>
+                    <p><b>🔹 التوسع الاستعماري:</b> بدأت إنجلترا وفرنسا في التوسع داخل العالم العربي في أواخر القرن التاسع عشر وبداية القرن العشرين، فسيطرت بريطانيا على مصر عام 1882 ثم توسعت في السودان والعراق والخليج العربي، وكان هدفها الأساسي حماية طريقها إلى الهند والسيطرة على قناة السويس ومصادر النفط لاحقًا. أما فرنسا فقد ركزت على شمال أفريقيا، فاحتلت الجزائر ثم تونس والمغرب، كما سيطرت على سوريا ولبنان بعد الحرب العالمية الأولى. وكان أسلوب الاستعمار يعتمد على الاحتلال العسكري والسيطرة السياسية والاقتصادية، مع نشر النفوذ الثقافي ومحاولة التأثير على المجتمعات العربية </p>
+                    <p><b>🔹 الحرب العالمية الأولى:</b> اندلعت الحرب العالمية الأولى عام 1914 بين قوتين كبيرتين: دول الحلفاء (مثل بريطانيا وفرنسا وروسيا) ودول المحور (مثل ألمانيا والدولة العثمانية). وقد كانت من أسبابها التنافس الاستعماري بين الدول الأوروبية والصراعات السياسية والعسكرية.
+
+وخلال الحرب، دخلت الدولة العثمانية إلى جانب ألمانيا، مما جعل أراضيها في الوطن العربي هدفًا مباشرًا للقوى الاستعمارية. واستغلت بريطانيا وفرنسا الحرب لتقسيم البلاد العربية بعد انتهاء الصراع، حيث تم الاتفاق بينهما في اتفاقية سايكس بيكو على تقسيم مناطق النفوذ في المشرق العربي.
+
+وبعد انتهاء الحرب عام 1918 انهارت الدولة العثمانية، وبدأت مرحلة جديدة من الاستعمار الأوروبي المباشر في معظم الدول العربية، مما أدى إلى ضعف الوحدة العربية وزيادة حركات المقاومة ضد الاستعمار</p>
+                </div>
+                <div class="activity-box">
+                    <strong>📝 نشاط (سؤال مقالي):</strong>
+                    <p>ما رأيك في دور العرب مع الاستعمار؟</p>
+                    <textarea placeholder="اكتب إجابتك هنا..."></textarea>
+                </div>
+            </div>
+        </section>
+
+        <section id="post-quiz" class="section-view">
+            <div class="lesson-unit">
+                <h3 style="text-align:center; color: var(--primary-green); margin-bottom:20px;">الاختبار النهائي الشامل</h3>
+                <div id="quiz-post-container"></div>
+                <button class="submit-btn" onclick="checkQuiz('post')">رصد النتيجة النهائية</button>
+                <div id="res-post" class="res-div"></div>
+            </div>
+        </section>
+
+    </div>
+
+    <script>
+        var questions = [
+            { q: "كان الهدف الرئيسي لنابليون هو قطع طريق الهند على إنجلترا.", ans: "صح" },
+            { q: "تولى محمد علي الحكم بناءً على رغبة إنجلترا.", ans: "خطأ" },
+            { q: "انتهت الثورة العرابية بالاحتلال البريطاني لمصر عام 1882.", ans: "صح" },
+            { q: "ساهمت الحملة الفرنسية في فك رموز حجر رشيد.", ans: "صح" },
+            { q: "نظام الاحتكار يعني ترك السوق للتجار الأجانب.", ans: "خطأ" },
+            { q: "بدأت الأزمة المالية في مصر منذ عهد سعيد باشا.", ans: "صح" },
+            { q: "كانت موقعة أبي قير البحرية نصراً كبيراً لفرنسا.", ans: "خطأ" },
+            { q: "ثورة 1919 هي أول ثورة قومية في تاريخ مصر الحديث.", ans: "صح" },
+            { q: "قاد أحمد عرابي الكفاح الوطني ضد الاحتلال في عهد مصطفى كامل.", ans: "خطأ" },
+            { q: "أدت اتفاقية سايكس بيكو لتقسيم الهلال الخصيب.", ans: "صح" }
+        ];
+
+        function buildQuiz(containerId, type) {
+            var container = document.getElementById(containerId);
+            var html = "";
+            for (var i = 0; i < questions.length; i++) {
+                html += '<div class="q-box"><p><b>' + (i+1) + '. ' + questions[i].q + '</b></p>';
+html += '<label style="margin-left:20px;"><input type="radio" name="q_'+type+'_'+i+'" value="صح"> صح</label>';
+                html += '<label><input type="radio" name="q_'+type+'_'+i+'" value="خطأ"> خطأ</label></div>';
+            }
+            container.innerHTML = html;
+        }
+
+        buildQuiz('quiz-pre-container', 'pre');
+        buildQuiz('quiz-post-container', 'post');
+
+        function showTab(id, btn) {
+            var views = document.getElementsByClassName('section-view');
+            for (var i=0; i<views.length; i++) views[i].style.display = 'none';
+            var btns = document.getElementsByClassName('nav-btn');
+            for (var i=0; i<btns.length; i++) btns[i].classList.remove('active');
+            document.getElementById(id).style.display = 'block';
+            btn.classList.add('active');
+            window.scrollTo(0,0);
+        }
+
+        function checkQuiz(type) {
+            var score = 0;
+            var answered = 0;
+            for (var i = 0; i < questions.length; i++) {
+                var radios = document.getElementsByName('q_'+type+'_'+i);
+                for (var j = 0; j < radios.length; j++) {
+                    if (radios[j].checked) {
+                        answered++;
+                        if (radios[j].value === questions[i].ans) score++;
+                    }
+                }
+            }
+            if(answered < 10) { alert("يرجى الإجابة على الـ 10 أسئلة بالكامل!"); return; }
+            var resDiv = document.getElementById('res-' + type);
+            resDiv.style.display = "block";
+            resDiv.style.backgroundColor = (score >= 7) ? "#d4edda" : "#fff3cd";
+            resDiv.innerHTML = "النتيجة: " + score + " من 10";
+        }
+    </script>
+</body>
+</html>

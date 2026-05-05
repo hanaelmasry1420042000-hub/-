@@ -1,0 +1,249 @@
+
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>منهج الأول الإعدادي | بوابة الدراسات</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root { --primary: #2c5530; --accent: #b8945f; --paper: #f4ece1; --blue: #2980b9; --danger: #c0392b; --orange: #d35400; --secondary: #2980b9;}
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Cairo', sans-serif; background-color: var(--paper); min-height: 100vh; line-height: 1.6; }
+        .hero-header { background-color: var(--primary); padding: 25px 40px; display: flex; justify-content: space-between; align-items: center; color: white; box-shadow: 0 4px 10px rgba(0,0,0,0.2); }
+        .hero-logo { width: 100px; height: 100px; background: white; padding: 5px; border-radius: 10px; object-fit: contain; }
+        .hero-title { font-size: 1.8rem; text-align: center; flex: 1; margin: 0 20px; }
+        .back-nav { background: white; padding: 12px 30px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+        .back-link { text-decoration: none; color: var(--primary); font-weight: bold; display: flex; align-items: center; gap: 8px; }
+        .main-nav { display: flex; justify-content: center; gap: 10px; margin: 20px auto; max-width: 1000px; padding: 0 10px; }
+        .nav-btn { flex: 1; padding: 15px; border: none; border-radius: 12px; cursor: pointer; font-family: 'Cairo', sans-serif; font-weight: bold; background: white; color: var(--primary); box-shadow: 0 4px 10px rgba(0,0,0,0.1); transition: 0.3s; }
+        .nav-btn.active { background: var(--primary); color: white; }
+        .container { max-width: 1000px; margin: 0 auto; padding: 20px; }
+        .section-view { display: none; }
+        .section-view.active { display: block; }
+        .lesson-card { background: white; padding: 30px; border-radius: 20px; margin-bottom: 25px; border-right: 8px solid var(--primary); box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
+        .unit-title { background: #eee; padding: 10px 20px; border-radius: 8px; margin-bottom: 20px; color: var(--primary); border-left: 5px solid var(--primary); }
+        .learning-objectives { background: #fdfdfd; padding: 15px; border-radius: 10px; margin-bottom: 15px; }
+        .question-box { background: #fdfcfb; padding: 18px; border-radius: 12px; margin-bottom: 15px; border: 1px solid #eee; }
+        .q-text { font-weight: bold; color: #444; margin-bottom: 10px; display: block; }
+        .option { display: block; margin: 8px 0; cursor: pointer; }
+        .submit-btn { width: 100%; padding: 18px; background: var(--primary); color: white; border: none; border-radius: 12px; cursor: pointer; font-weight: bold; font-size: 1.1rem; margin-top: 15px; }
+        .result-div { display: none; margin-top: 20px; padding: 20px; border-radius: 12px; text-align: center; font-weight: bold; font-size: 1.2rem; }
+    </style>
+</head>
+<body>
+
+    <header class="hero-header">
+        <img src="logo1.jpg" class="hero-logo">
+        <h1 class="hero-title">الصف الأول الإعدادي - الدراسات الاجتماعية</h1>
+        <img src="logo2.jpg" class="hero-logo">
+    </header>
+
+    <div class="back-nav">
+        <a href="الصفحة الرئيسية.html" class="back-link"><i class="fas fa-home"></i> العودة للصفحة الرئيسية</a>
+    </div>
+
+    <nav class="main-nav">
+        <button class="nav-btn active" onclick="showTab('pre-view', this)">📝 الاختبار القبلي</button>
+        <button class="nav-btn" onclick="showTab('lesson-view', this)">📖 المحتوى العلمي</button>
+        <button class="nav-btn" onclick="showTab('post-view', this)">🎓 الاختبار النهائي</button>
+    </nav>
+
+<div class="container">
+        <section id="pre-view" class="section-view active">
+            <div class="lesson-card">
+                <h3 style="text-align: center; margin-bottom: 20px;">أجب عن الأسئلة التالية لاختبار معلوماتك</h3>
+                <div id="quiz-pre"></div>
+                <button class="submit-btn" onclick="checkQuiz('quiz-pre', 'res-pre')">إرسال الإجابات</button>
+                <div id="res-pre" class="result-div"></div>
+            </div>
+        </section>
+
+        <section id="lesson-view" class="section-view">
+            <h2 style="color:var(--secondary); border-bottom: 2px solid var(--secondary); padding-bottom: 10px;">🌍 الوحدة الأولى: الملامح الطبيعية لقارة إفريقيا</h2>
+            <div class="lesson-card" style="border-right-color: var(--secondary);">
+                <div class="learning-objectives" style="border-right: 4px solid var(--secondary);">
+                    <h4 style="margin:0 0 8px 0; color:var(--secondary);">🎯 أهداف الدرس:</h4>
+                    <ul style="font-size: 0.9rem; margin: 0; padding-right: 20px;">
+                        <li>أن يحدد الطالب الموقع الجغرافي لقارة إفريقيا.</li>
+                        <li>أن يستنتج أهم مظاهر السطح (الجبال والهضاب).</li>
+                        <li>أن يفسر أسباب تنوع المناخ في القارة.</li>
+                        <li>أن يربط بين المطر والنبات الطبيعي.</li>
+                    </ul>
+                </div>
+                <p><b>📍 الموقع:</b>  تقع في قلب العالم، يمر بها خط الاستواء ومدار السرطان ومدار الجدي.موقع متميز يربط بين قارات العالم ويساعد على التجارة
+تنوع مناخي بسبب مرور دوائر العرض
+غنية بالموارد الطبيعية مثل المعادن والبترول
+وجود مساحات واسعة صالحة للزراعة</p>
+                <p><b>⛰ التضاريس:</b> تُعرف إفريقيا بأنها "قارة الهضاب" لأن معظم أراضيها مرتفعة قارة الهضاب (الحبشة)، جبال كلمنجارو وأطلس، وأنهار كبرى مثل النيل والكونغو.</p>
+                <p><b>☀️ المناخ:</b> وده أدى لتنوع النبات الطبيعي ما بين غابات كثيفة، وحشائش السافانا، ونباتات صحراوية.
+
+ متنوع بين استوائي حار، مداري، وصحراوي جاف.وده أدى لتنوع النبات الطبيعي ما بين غابات كثيفة، وحشائش السافانا، ونباتات صحراوية.
+
+كان لنهر النيل دور أساسي في قيام الحضارة المصرية القديمة، وظهرت في إفريقيا حضارات مهمة زي الحضارة المصرية والنوبة وكوش</p>
+                <div style="text-align: center; margin: 20px 0;">
+                    <img src="ناخ افريقيا.jpg" style="max-width: 45%; border-radius: 10px; margin: 5px;">
+                    <img src="تضاريس افريقيا.jpg" style="max-width: 45%; border-radius: 10px; margin: 5px;">
+                </div>
+                <div class="activity-box" style="margin-top: 15px; padding: 15px; background: #f9f9f9; border: 1px solid #ddd; border-radius: 8px;">
+                    <p style="color:var(--secondary); font-weight: bold;">📝 نشاط تفاعلي:</p>
+                    <label>بما تفسر: تنوع النبات الطبيعي في قارة إفريقيا؟</label>
+                    <textarea style="width: 100%; height: 60px; margin-top: 10px; padding: 10px; border-radius: 5px; border: 1px solid #ccc;"></textarea>
+                    <button onclick="this.nextElementSibling.style.display='block'; this.style.display='none'" style="margin-top:10px; background:var(--secondary); color:white; border:none; padding:8px 15px; border-radius:5px; cursor:pointer;">إظهار الإجابة النموذجية</button>
+                    <div style="display:none; margin-top:10px; padding:10px; background:#e8f5e9; border-right:4px solid #2e7d32; font-size:0.9rem;">
+                        <b>✅ الإجابة:</b> بسبب تنوع الأقاليم المناخية وتدرج كميات الأمطار والحرارة.
+                    </div>
+                </div>
+            </div>
+
+            <h2 style="color:var(--danger); border-bottom: 2px solid var(--danger); padding-bottom: 10px;">🏛 الوحدة الثانية: الحضارة المصرية القديمة</h2>
+            <div class="lesson-card" style="border-right-color: var(--danger);">
+                <div class="learning-objectives" style="border-right: 4px solid var(--danger);">
+                    <h4 style="margin:0 0 8px 0; color:var(--danger);">🎯 أهداف الدرس:</h4>
+                    <ul style="font-size: 0.9rem; margin: 0; padding-right: 20px;">
+                        <li>أن يميز الطالب بين عصور الدولة (القديمة - الوسطى - الحديثة).</li>
+                        <li>أن يعدد أهم إنجازات ملوك مصر القديمة.</li>
+                        <li>أن يوضح أهمية الزراعة في عصر الدولة الوسطى.</li>
+
+<li>أن يحلل أسباب تكوين الإمبراطورية في الدولة الحديثة.</li>
+                    </ul>
+                </div>
+                <p><b>🏗 الدولة القديمة:</b>تُعد الدولة القديمة من أقدم وأهم عصور الحضارة المصرية، حيث تميزت بقوة السلطة المركزية في يد الفرعون الذي اعتُبر الحاكم الأعلى للبلاد. وقد شهدت هذه الفترة استقرارًا سياسيًا واضحًا، مما ساعد على ازدهار العمران، وكان من أبرز إنجازاتها بناء الأهرامات التي عكست تقدم المصريين في الهندسة واهتمامهم بالعقيدة الدينية والحياة بعد الموت.ك .</p>
+                <p><b>🌾 الدولة الوسطى:</b> عصر الرخاء الاقتصادي والاهتمام بالزراعة والري.تُعرف الدولة الوسطى بعصر الرخاء الاقتصادي، حيث استعادت مصر استقرارها بعد فترة من الاضطرابات. واهتم الحكام بتنمية الموارد الاقتصادية، خاصة الزراعة، من خلال تنظيم الري وشق الترع، مما أدى إلى زيادة الإنتاج وتحسن مستوى المعيشة. كما شهدت هذه الفترة اهتمامًا بالمشروعات العامة وتحقيق قدر من العدالة الاجتماعي</p>
+                <p><b>⚔️ الدولة الحديثة:</b> عصر المجد الحربي وتكوين الإمبراطورية.حيث تحولت مصر إلى إمبراطورية واسعة نتيجة للفتوحات والتوسع خارج حدودها. وقد اهتم الملوك بتقوية الجيش وتأمين البلاد، ومن أبرزهم تحتمس الثالث ورمسيس الثاني، الذين ساهموا في تعزيز مكانة مصر الإقليمية. وتميزت هذه الفترة أيضًا بالتقدم في مجالات الفن والعمارة.</p>
+                <img src="تاريخ صر.jpg" style="max-width: 100%; border-radius: 10px; margin: 15px 0;">
+                <div class="activity-box" style="margin-top: 15px; padding: 15px; background: #f9f9f9; border: 1px solid #ddd; border-radius: 8px;">
+                    <p style="color:var(--danger); font-weight: bold;">📝 نشاط تفاعلي:</p>
+                    <label>لماذا سمي عصر الدولة الوسطى بعصر الرخاء الاقتصادي؟</label>
+                    <textarea style="width: 100%; height: 60px; margin-top: 10px; padding: 10px; border-radius: 5px; border: 1px solid #ccc;"></textarea>
+                    <button onclick="this.nextElementSibling.style.display='block'; this.style.display='none'" style="margin-top:10px; background:var(--danger); color:white; border:none; padding:8px 15px; border-radius:5px; cursor:pointer;">إظهار الإجابة النموذجية</button>
+                    <div style="display:none; margin-top:10px; padding:10px; background:#fff3e0; border-right:4px solid #ef6c00; font-size:0.9rem;">
+                        <b>✅ الإجابة:</b> بسبب اهتمام ملوكها بالمشروعات الاقتصادية واستثمار الموارد والنهوض بالزراعة.
+                    </div>
+                </div>
+            </div>
+
+            <h2 style="color:var(--primary); border-bottom: 2px solid var(--primary); padding-bottom: 10px;">📖 الوحدة الثالثة: انتشار الإسلام في إفريقيا</h2>
+            <div class="lesson-card" style="border-right-color: var(--primary);">
+                <div class="learning-objectives" style="border-right: 4px solid var(--primary);">
+                    <h4 style="margin:0 0 8px 0; color:var(--primary);">🎯 أهداف الدرس:</h4>
+                    <ul style="font-size: 0.9rem; margin: 0; padding-right: 20px;">
+                        <li>أن يعدد الطالب طرق دخول الإسلام إلى قارة إفريقيا.</li>
+                        <li>أن يوضح أثر حركة التجارة في انتشار الدين الإسلامي.</li>
+                        <li>أن يتعرف على الممالك الإسلامية الكبرى في غرب القارة.</li>
+                    </ul>
+                </div>
+                <p><b>🔹 دخول الإسلام:</b>   دخل الإسلام إلى قارة إفريقيا في وقت مبكر عن طريق:
+الفتح الإسلامي لمصر على يد عمرو بن العاص
+انتقال المسلمين من مصر إلى باقي أجزاء إفريقيا ساعدت في دخول الإسلام إلى شمال إفريقيا
+التجارة
+التجار المسلمون نقلوا الإسلام إلى غرب ووسط إفريقيا
+الهجرة
+هجرة المسلمين إلى الحبشة في بداية الدعوة الإسلامية
+الدعاة والعلماء
+نشروا تعاليم الإسلام بين الشعوب
+ثالثًا: أثر انتشار الإسلام في إفريقيا
+انتشار اللغة العربية
+قيام دول إسلامية
+ازدهار التعليم
+انتشار العدل والمساواة
+رابعًا: أهم الممالك الإسلامية في إفريقيا
+مملكة غانا
+مملكة مالي
+مملكة سنغاي .</p>
+                <p><b> دور مصر في افريقيا:</b>أولاً: دور مصر الديني
+نشر الإسلام في إفريقيا
+إرسال العلماء والدعاة
+إنشاء المساجد
+ثانيًا: دور مصر الثقافي
+نشر اللغة العربية
+إنشاء المدارس والمعاهد
+نقل العلوم والمعرفة
+ثالثًا: دور مصر الاقتصادي
+التبادل التجاري مع دول إفريقيا
+تصدير واستيراد السلع
+الاستفادة من موقع مصر الجغرافي
+رابعًا: دور مصر السياسي
+دعم العلاقات مع الدول الإفريقية
+المساهمة في استقرار المنطقة
+التأثير في الأحداث السياسية
+خامسًا: أثر دور مصر في إفريقيا
+توطيد العلاقات بين مصر والدول الإفريقية
+نشر الحضارة الإسلاميةالتأثير في الثقافل (ة.</p>
+                <img src="خريطة افريقيا.jpg" style="max-width: 100%; border-radius: 10px; margin: 15px 0;">
+                <div class="activity-box" style="margin-top: 15px; padding: 15px; background: #f9f9f9; border: 1px solid #ddd; border-radius: 8px;">
+                    <p style="color:var(--primary); font-weight: bold;">📝 نشاط تفاعلي:</p>
+                    <label>ما هو الدور الذي لعبته الممالك الإفريقية في ترسيخ الإسلام؟</label>
+                    <textarea style="width: 100%; height: 60px; margin-top: 10px; padding: 10px; border-radius: 5px; border: 1px solid #ccc;"></textarea>
+                    <button onclick="this.nextElementSibling.style.display='block'; this.style.display='none'" style="margin-top:10px; background:var(--primary); color:white; border:none; padding:8px 15px; border-radius:5px; cursor:pointer;">إظهار الإجابة النموذجية</button>
+                    <div style="display:none; margin-top:10px; padding:10px; background:#e3f2fd; border-right:4px solid #1565c0; font-size:0.9rem;">
+                        <b>✅ الإجابة:</b> ساهمت في بناء المساجد والمدارس، وجعلت مدن مثل "تمبكتو" مراكز إشعاع ديني وعلمي.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+<section id="post-view" class="section-view">
+            <div class="lesson-card">
+                <h3 style="text-align: center; margin-bottom: 20px;">التقييم النهائي</h3>
+                <div id="quiz-post"></div>
+                <button class="submit-btn" onclick="checkQuiz('quiz-post', 'res-post')">رصد النتيجة</button>
+                <div id="res-post" class="result-div"></div>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        var myQuestions = [
+            { q: "تقع قارة إفريقيا في قلب العالم تقريباً.", options: ["صح", "خطأ"], ans: "صح" },
+            { q: "يُعد نهر النيل أطول نهر في العالم.", options: ["صح", "خطأ"], ans: "صح" },
+            { q: "عُرف عصر الدولة القديمة بعصر بناة الأهرام.", options: ["صح", "خطأ"], ans: "صح" },
+            { q: "المناخ الاستوائي يتميز بقلة الأمطار.", options: ["صح", "خطأ"], ans: "خطأ" },
+            { q: "   يعد نهر النيل اطول انهار العالم  .", options: ["صح", "خطأ"], ans: "صح" }
+            
+        ];
+
+        function buildQuiz(containerId) {
+            var container = document.getElementById(containerId);
+            var html = "";
+            for (var i = 0; i < myQuestions.length; i++) {
+                html += '<div class="question-box"><span class="q-text">' + (i + 1) + ". " + myQuestions[i].q + '</span>';
+                for (var j = 0; j < myQuestions[i].options.length; j++) {
+                    var opt = myQuestions[i].options[j];
+                    html += '<label class="option"><input type="radio" name="q_' + containerId + '_' + i + '" value="' + opt + '"> ' + opt + '</label>';
+                }
+                html += '</div>';
+            }
+            container.innerHTML = html;
+        }
+
+        buildQuiz('quiz-pre');
+        buildQuiz('quiz-post');
+
+        function showTab(viewId, btn) {
+            var views = document.getElementsByClassName('section-view');
+            for (var i = 0; i < views.length; i++) { views[i].style.display = 'none'; }
+            var btns = document.getElementsByClassName('nav-btn');
+            for (var i = 0; i < btns.length; i++) { btns[i].classList.remove('active'); }
+            document.getElementById(viewId).style.display = 'block';
+            btn.classList.add('active');
+        }
+
+        function checkQuiz(quizId, resultId) {
+            var score = 0;
+            for (var i = 0; i < myQuestions.length; i++) {
+                var radios = document.getElementsByName('q_' + quizId + '_' + i);
+                var selected = "";
+                for (var r = 0; r < radios.length; r++) { if (radios[r].checked) selected = radios[r].value; }
+                if (selected === myQuestions[i].ans) score++;
+            }
+            var resBox = document.getElementById(resultId);
+            resBox.style.display = 'block';
+            resBox.style.backgroundColor = (score >= 3) ? '#d4edda' : '#fff3cd';
+            resBox.innerHTML = "نتيجتك هي: " + score + " من " + myQuestions.length;
+        }
+    </script>
+</body>
+</html>
